@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>ARCANE Community — Informasi. Kreativitas. Komunitas.</title>
+  <meta name="description" content="ARCANE Community — berbagi informasi sekolah & jasa digital." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js" defer></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+</head>
+<body>
+
+  <!-- ===== WELCOME BANNER (muncul 3 detik lalu hilang) ===== -->
+  <div class="welcome-banner" id="welcomeBanner">
+    <div class="container">
+      <div class="welcome-inner">
+        <span class="welcome-icon">✨</span>
+        <div class="welcome-text">
+          <h1 class="welcome-title">
+            Welcome, <span id="welcomeUsername">User</span>
+          </h1>
+          <span class="welcome-role" id="welcomeRole" style="display:none;">(Role)</span>
+          <p class="welcome-sub">Selamat datang di ARCANE Community</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <img src="assets/logo.png" alt="ARCANE Logo" class="brand-logo" width="38" height="38" />
+        <span class="brand-name">ARCANE</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home"     data-i18n="nav.home">Beranda</a>
+        <a href="#about"    data-i18n="nav.about">Tentang</a>
+        <a href="#services" data-i18n="nav.services">Layanan</a>
+        <a href="#news"     data-i18n="nav.news">Info</a>
+        <a href="#events"   data-i18n="nav.events">Acara</a>
+        <a href="#gallery"  data-i18n="nav.gallery">Galeri</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="langToggle" aria-label="Switch language">
+          <span id="langLabel">EN</span>
+        </button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <i class="lucide-moon" id="themeIcon"></i>
+        </button>
+        <a href="admin.html" class="icon-btn" id="adminBtn" style="display:none;" title="Dashboard">
+          <i class="lucide-layout-dashboard"></i>
+        </a>
+        <button class="icon-btn" id="logoutBtn" style="display:none;" title="Logout">
+          <i class="lucide-log-out"></i>
+        </button>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">
+          <i class="lucide-menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="badge" data-i18n="hero.badge">Komunitas Informasi & Digital</span>
+        <h1 data-i18n="hero.title">Informasi. Kreativitas. Komunitas.</h1>
+        <p data-i18n="hero.subtitle">
+          ARCANE Community berbagi informasi sekolah dan menyediakan jasa digital
+          untuk anggota maupun publik.
+        </p>
+        <div class="hero-cta">
+          <a href="#services" class="btn btn-primary" data-i18n="hero.cta1">Lihat Layanan</a>
+          <a href="#about" class="btn btn-ghost" data-i18n="hero.cta2">Tentang Kami</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/logo.png" alt="ARCANE" width="420" height="420" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" data-i18n="about.tag">Tentang Kami</span>
+        <h2 data-i18n="about.title">Siapa ARCANE?</h2>
+        <p data-i18n="about.desc">
+          ARCANE Community adalah wadah berbagi informasi seputar sekolah dan
+          penyedia jasa digital. Kami percaya informasi yang tepat & desain yang
+          rapi bisa membantu banyak orang.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section section-alt" id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" data-i18n="services.tag">Layanan</span>
+        <h2 data-i18n="services.title">Jasa Digital Kami</h2>
+        <p data-i18n="services.desc">Lima layanan utama yang kami sediakan untuk anggota dan publik.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="lucide-file-text"></i></div>
+          <h3 data-i18n="services.doc.title">Edit Dokumen</h3>
+          <p data-i18n="services.doc.desc">Perapian format, pengetikan, dan penyuntingan dokumen.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="lucide-calendar-days"></i></div>
+          <h3 data-i18n="services.schedule.title">Edit Jadwal</h3>
+          <p data-i18n="services.schedule.desc">Pembuatan & perapian jadwal pelajaran atau kegiatan.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="lucide-pen-tool"></i></div>
+          <h3 data-i18n="services.logo.title">Desain Logo</h3>
+          <p data-i18n="services.logo.desc">Pembuatan logo modern & minimalis untuk komunitas atau brand.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="lucide-image"></i></div>
+          <h3 data-i18n="services.image.title">Edit Gambar</h3>
+          <p data-i18n="services.image.desc">Retouch, komposisi, dan desain grafis sederhana.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="lucide-video"></i></div>
+          <h3 data-i18n="services.video.title">Edit Video</h3>
+          <p data-i18n="services.video.desc">Editing video untuk konten sekolah, acara, atau promosi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWS ===== -->
+  <section class="section" id="news">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" data-i18n="news.tag">Info Sekolah</span>
+        <h2 data-i18n="news.title">Berita & Informasi Terbaru</h2>
+        <p data-i18n="news.desc">Update seputar kegiatan, pengumuman, dan informasi sekolah.</p>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS ===== -->
+  <section class="section section-alt" id="events">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" data-i18n="events.tag">Kalender</span>
+        <h2 data-i18n="events.title">Acara Mendatang</h2>
+        <p data-i18n="events.desc">Jadwal kegiatan dan acara ARCANE Community.</p>
+      </div>
+      <div class="calendar-wrapper reveal">
+        <div id="calendar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" data-i18n="gallery.tag">Galeri</span>
+        <h2 data-i18n="gallery.title">Momen & Karya</h2>
+        <p data-i18n="gallery.desc">Dokumentasi kegiatan dan hasil karya ARCANE Community.</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="ARCANE" width="52" height="52" />
+        <p data-i18n="footer.tagline">Informasi. Kreativitas. Komunitas.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about"    data-i18n="nav.about">Tentang</a>
+        <a href="#services" data-i18n="nav.services">Layanan</a>
+        <a href="#news"     data-i18n="nav.news">Info</a>
+        <a href="#events"   data-i18n="nav.events">Acara</a>
+        <a href="#gallery"  data-i18n="nav.gallery">Galeri</a>
+      </div>
+      <p class="footer-copy">© <span id="year"></span> ARCANE Community. <span data-i18n="footer.rights">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="" id="lightboxImg" />
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { firebaseConfig } from "./js/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const ROLE_DISPLAY = {
+      owner:    'ArcZeyn',
+      operator: 'Operator',
+      member:   'Member'
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      const adminBtn = document.getElementById('adminBtn');
+
+      if (user) {
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          const data = userDoc.exists() ? userDoc.data() : {};
+          const username = data.username || user.email.split('@')[0];
+          const role = data.role || 'member';
+          const roleDisplay = ROLE_DISPLAY[role] || role;
+
+          // Tampilkan tombol
+          logoutBtn.style.display = 'flex';
+          if (role === 'owner' || role === 'admin') {
+            adminBtn.style.display = 'flex';
+          }
+
+          // Tampilkan banner sambutan
+          showWelcomeBanner(username, roleDisplay, role);
+
+        } catch (e) {
+          console.error('Gagal ambil data user:', e);
+        }
+      } else {
+        logoutBtn.style.display = 'none';
+        adminBtn.style.display = 'none';
+        window.location.href = 'login.html';
+      }
+    });
+
+    // ===== Banner sambutan (3 detik lalu fade out) =====
+    function showWelcomeBanner(username, roleDisplay, role) {
+      const banner = document.getElementById('welcomeBanner');
+      const usernameEl = document.getElementById('welcomeUsername');
+      const roleEl = document.getElementById('welcomeRole');
+      if (!banner) return;
+
+      usernameEl.textContent = username;
+
+      // Owner: role = username, nggak perlu tanda kurung
+      if (role === 'owner') {
+        roleEl.style.display = 'none';
+      } else {
+        roleEl.textContent = `(${roleDisplay})`;
+        roleEl.style.display = 'inline-block';
+      }
+
+      // Muncul
+      setTimeout(() => banner.classList.add('visible'), 100);
+
+      // Hilang setelah 3 detik
+      setTimeout(() => {
+        banner.classList.remove('visible');
+        setTimeout(() => banner.remove(), 600);
+      }, 3000);
+    }
+
+    document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+      await signOut(auth);
+      window.location.href = 'login.html';
+    });
+  </script>
+
+  <script src="js/lang.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/news.js" defer></script>
+  <script src="js/events.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+</body>
+</html>

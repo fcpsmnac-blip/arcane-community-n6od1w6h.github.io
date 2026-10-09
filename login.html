@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Login — ARCANE Community</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+</head>
+<body class="login-body">
+
+  <div class="login-wrapper">
+    <div class="login-card">
+      <img src="assets/logo.png" alt="ARCANE" class="login-logo" />
+      <h1 class="login-title">ARCANE</h1>
+      <p class="login-subtitle">Masuk untuk melanjutkan</p>
+
+      <form id="loginForm" class="login-form">
+        <div class="input-group">
+          <i class="lucide-mail"></i>
+          <input type="email" id="email" placeholder="Email" required autocomplete="email" />
+        </div>
+        <div class="input-group">
+          <i class="lucide-lock"></i>
+          <input type="password" id="password" placeholder="Password" required autocomplete="current-password" />
+          <button type="button" class="toggle-pass" id="togglePass" aria-label="Show password">
+            <i class="lucide-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+
+        <div class="login-error" id="loginError"></div>
+
+        <button type="submit" class="btn btn-primary login-btn" id="loginBtn">
+          <span id="loginBtnText">Masuk</span>
+          <i class="lucide-log-in"></i>
+        </button>
+      </form>
+
+      <p class="login-footer">Informasi. Kreativitas. Komunitas.</p>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { firebaseConfig } from "./js/firebase-config.js";
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Kalau udah login → redirect
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          const role = userDoc.exists() ? userDoc.data().role : 'member';
+          window.location.href = (role === 'owner' || role === 'admin') ? 'admin.html' : 'index.html';
+        } catch (e) {
+          window.location.href = 'index.html';
+        }
+      }
+    });
+
+    // Toggle password visibility
+    const togglePass = document.getElementById('togglePass');
+    const passInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    togglePass?.addEventListener('click', () => {
+      const isPass = passInput.type === 'password';
+      passInput.type = isPass ? 'text' : 'password';
+      eyeIcon.className = isPass ? 'lucide-eye-off' : 'lucide-eye';
+    });
+
+    // Login
+    const form = document.getElementById('loginForm');
+    const errorEl = document.getElementById('loginError');
+    const btn = document.getElementById('loginBtn');
+    const btnText = document.getElementById('loginBtnText');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.textContent = '';
+      btn.disabled = true;
+      btnText.textContent = 'Memproses...';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const cred = await signInWithEmailAndPassword(auth, email, password);
+        const userDoc = await getDoc(doc(db, 'users', cred.user.uid));
+
+        if (!userDoc.exists()) {
+          await signOut(auth);
+          throw new Error('Akun belum di-setup admin. Hubungi ArcZeyn.');
+        }
+
+        const data = userDoc.data();
+        if (!data.username) {
+          await signOut(auth);
+          throw new Error('Username belum di-setup admin. Hubungi ArcZeyn.');
+        }
+
+        const role = data.role || 'member';
+        window.location.href = (role === 'owner' || role === 'admin') ? 'admin.html' : 'index.html';
+      } catch (err) {
+        console.error(err);
+        let msg = 'Email atau password salah.';
+        if (err.code === 'auth/too-many-requests') msg = 'Terlalu banyak percobaan. Coba lagi nanti.';
+        if (err.code === 'auth/invalid-email') msg = 'Format email tidak valid.';
+        if (err.message && !err.code) msg = err.message;
+        errorEl.textContent = msg;
+        btn.disabled = false;
+        btnText.textContent = 'Masuk';
+      }
+    });
+  </script>
+</body>
+</html>
