@@ -925,3 +925,192 @@ html[data-theme="dark"] .login-logo {
     font-size: 12px !important;
   }
 }
+
+/* ===== FIX: Layout Lebih Rapat & Profesional ===== */
+
+/* Card layanan — 2 kolom di mobile */
+@media (max-width: 700px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .service-card {
+    padding: 18px 14px;
+  }
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+  .service-card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  .service-card p {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+}
+
+/* Section head — perkecil font di mobile */
+@media (max-width: 600px) {
+  .section-head {
+    margin-bottom: 28px;
+    padding: 0 8px;
+  }
+  .section-head h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .section-head p {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .section-tag {
+    font-size: 11.5px;
+    padding: 4px 11px;
+    margin-bottom: 10px;
+  }
+
+  /* Section padding lebih rapat */
+  .section {
+    padding: 40px 0;
+  }
+
+  /* Hero lebih rapat */
+  .hero {
+    padding: 32px 0 28px;
+  }
+  .hero h1 {
+    font-size: 24px;
+  }
+  .hero p {
+    font-size: 13.5px;
+  }
+  .badge {
+    font-size: 11.5px;
+    padding: 4px 11px;
+    margin-bottom: 12px;
+  }
+  .hero h1::after {
+    width: 50px;
+    height: 3px;
+    margin-top: 12px;
+  }
+
+  /* News — perkecil */
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .news-body {
+    padding: 14px;
+  }
+  .news-body h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .news-body p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .news-date {
+    font-size: 10.5px;
+    margin-bottom: 6px;
+  }
+  .news-link {
+    font-size: 12px;
+  }
+
+  /* Galeri — 3 kolom di mobile */
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  /* Container lebih rapat */
+  .container {
+    padding: 0 14px;
+  }
+
+  /* Tombol lebih kecil */
+  .btn {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+  .hero-cta {
+    gap: 8px;
+  }
+
+  /* Banner sambutan lebih rapat */
+  .welcome-banner.visible {
+    padding: 18px 0;
+  }
+  .welcome-title {
+    font-size: 18px;
+  }
+  .welcome-sub {
+    font-size: 12.5px;
+  }
+  .welcome-icon {
+    font-size: 22px;
+  }
+
+  /* Navbar lebih rapat */
+  .nav-inner {
+    height: 60px;
+  }
+  .brand-name {
+    font-size: 17px;
+  }
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+  .icon-btn i {
+    font-size: 16px;
+  }
+
+  /* Footer lebih rapat */
+  .footer {
+    padding: 32px 0 20px;
+  }
+  .footer-links {
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .footer-links a {
+    font-size: 12.5px;
+  }
+  .footer-brand img {
+    width: 40px;
+    height: 40px;
+  }
+  .footer-copy {
+    font-size: 11.5px;
+    padding-top: 16px;
+  }
+}
+
+/* ===== TABLET — 3 kolom layanan ===== */
+@media (min-width: 601px) and (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .service-card {
+    padding: 22px 18px;
+  }
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
